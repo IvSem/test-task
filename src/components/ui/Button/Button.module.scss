@@ -1,0 +1,53 @@
+.button {
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  &:disabled {
+    background-color: var(--basalt);
+    cursor: not-allowed;
+  }
+}
+
+.primary {
+  background-color: var(--azure);
+  color: var(--black);
+  transition: all 0.3s ease 0s;
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: var(--moon);
+    }
+  }
+}
+
+.outline {
+  background-color: transparent;
+  outline: 1px solid var(--text-primary);
+  //border: 1px solid var(--text-primary);
+  color: var(--text-primary);
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: var(--moon);
+      color: var(--black);
+    }
+  }
+}
+
+.white {
+  background-color: var(--moon);
+  color: var(--black);
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: var(--azure);
+    }
+  }
+}

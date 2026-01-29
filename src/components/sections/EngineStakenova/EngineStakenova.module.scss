@@ -1,0 +1,231 @@
+.header {
+  margin-bottom: 64px;
+}
+
+.stepsWrapper {
+  padding: 44px 32px 32px 32px;
+  position: relative;
+  border: 1px solid var(--jet);
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 1280px) {
+    flex-direction: column;
+    row-gap: 32px;
+  }
+}
+
+.stepsTitle {
+  font-size: 18px;
+  display: inline-block;
+  text-transform: uppercase;
+  background-color: var(--black);
+  padding-left: 16px;
+  padding-right: 16px;
+
+  position: absolute;
+  top: 0;
+  left: 32px;
+  transform: translateY(-50%);
+
+  .highliht {
+    color: var(--azure);
+  }
+}
+
+.stepHeader {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+}
+
+.step {
+  position: relative;
+  padding: 24px;
+  width: 100%;
+  display: flex;
+
+  @media (min-width: 1280px) {
+    flex: 0 1 400px;
+  }
+
+  @media (max-width: 1280px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(currentColor, currentColor) left top,
+      linear-gradient(currentColor, currentColor) left top,
+      linear-gradient(currentColor, currentColor) right top,
+      linear-gradient(currentColor, currentColor) right top,
+      linear-gradient(currentColor, currentColor) left bottom,
+      linear-gradient(currentColor, currentColor) left bottom,
+      linear-gradient(currentColor, currentColor) right bottom,
+      linear-gradient(currentColor, currentColor) right bottom;
+    background-size:
+      16px 2px,
+      2px 16px,
+      16px 2px,
+      2px 16px,
+      16px 2px,
+      2px 16px,
+      16px 2px,
+      2px 16px;
+    background-repeat: no-repeat;
+    z-index: 2;
+  }
+
+  .stepTitle {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    letter-spacing: 0.04em;
+  }
+
+  .stepCount {
+    font-size: 1.125rem;
+    color: var(--azure);
+    letter-spacing: 0.02em;
+    margin-bottom: 24px;
+  }
+
+  .stepDescr {
+    font-size: 16px;
+    color: var(--platinum);
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+  }
+
+  .stepContent {
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.divider {
+  margin-left: 16px;
+  margin-right: 16px;
+  width: 72px;
+  height: 2px;
+  background-color: var(--moon);
+  position: relative;
+
+  @media (max-width: 1280px) {
+    display: none;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: var(--azure);
+  }
+}
+
+.stepItems {
+  display: grid;
+  row-gap: 16px;
+  width: 100%;
+
+  .stepItem {
+    padding: 8px 16px;
+    border: 1px solid var(--jet);
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+
+    span {
+      font-size: 18px;
+      line-height: 1.5;
+      letter-spacing: 0.02em;
+    }
+
+    svg {
+      stroke: var(--azure);
+    }
+  }
+}
+
+.widget {
+  padding: 32px;
+  border: 1px solid var(--jet);
+  display: flex;
+  gap: 32px;
+  margin-top: 64px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    margin-top: 48px;
+  }
+}
+
+.widgetImg {
+  width: 164px;
+  height: 164px;
+  flex-shrink: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(currentColor, currentColor) left top,
+      linear-gradient(currentColor, currentColor) left top,
+      linear-gradient(currentColor, currentColor) right top,
+      linear-gradient(currentColor, currentColor) right top,
+      linear-gradient(currentColor, currentColor) left bottom,
+      linear-gradient(currentColor, currentColor) left bottom,
+      linear-gradient(currentColor, currentColor) right bottom,
+      linear-gradient(currentColor, currentColor) right bottom;
+    background-size:
+      16px 2px,
+      2px 16px,
+      16px 2px,
+      2px 16px,
+      16px 2px,
+      2px 16px,
+      16px 2px,
+      2px 16px;
+    background-repeat: no-repeat;
+    z-index: 2;
+  }
+}
+
+.widgetContent {
+  display: grid;
+  row-gap: 16px;
+}
+
+.comingSoon {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 12px;
+  span {
+    color: var(--azure);
+  }
+}

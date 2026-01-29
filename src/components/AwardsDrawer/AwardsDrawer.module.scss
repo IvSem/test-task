@@ -1,0 +1,123 @@
+$button-width: 40px;
+$drawer-width: 564px;
+$drawer-height: 360px;
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 20;
+
+  &.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.drawer {
+  position: fixed;
+  top: 50%;
+  right: calc(-#{$drawer-width} + #{$button-width});
+  transform: translateY(-50%);
+  width: $drawer-width;
+  height: $drawer-height;
+  border: 1px solid var(--azure);
+  background-color: var(--black);
+
+  display: flex;
+  z-index: 30;
+  transition: all 0.3s ease 0s;
+
+  &.open {
+    right: 0;
+  }
+
+  @media (max-width: 1280px) {
+    flex-direction: column;
+    top: auto;
+    bottom: -100%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    transform: none;
+    border-color: var(--moon);
+    height: auto;
+    max-height: 60dvh;
+    &.open {
+      bottom: 0;
+    }
+  }
+}
+
+.handle {
+  writing-mode: sideways-lr;
+  text-orientation: mixed;
+  padding-left: 8px;
+  padding-right: 8px;
+
+  @media (max-width: 1280px) {
+    display: none;
+  }
+}
+
+.content {
+  flex: 1;
+  background: linear-gradient(358.02deg, #3e97ff -22.4%, #1f4c8080 22.39%, #0000 98.59%);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.25rem;
+  overflow-y: auto;
+  @media (max-width: 1280px) {
+    background: none;
+  }
+
+  p {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  ul {
+    display: grid;
+    //grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.75rem;
+  }
+
+  li {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid transparent;
+    transition: all 0.3s ease 0s;
+    @media (any-hover: hover) {
+      &:hover {
+        border: 1px solid var(--azure);
+      }
+    }
+  }
+}
+.awardsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 1rem;
+  border-bottom: 1px solid var(--basalt);
+  padding: 1rem;
+  @media (min-width: 1280px) {
+    display: none;
+  }
+  span {
+    font-size: 1.125rem;
+    line-height: 28px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+}

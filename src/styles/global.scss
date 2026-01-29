@@ -1,0 +1,44 @@
+body {
+  background-image: url('@/assets/images/bg/background.svg');
+  background-repeat: repeat-y;
+  background-position: center top;
+  background-size: 100% auto;
+  color: var(--moon);
+}
+.__container {
+  max-width: calc(92rem + 3rem);
+  margin: 0 auto;
+  padding: 0 16px;
+
+  @media (min-width: 768px) {
+    padding: 0 24px;
+  }
+}
+
+//========================================================================================================================================================
+.dropdown-copied {
+  color: var(--green);
+  svg {
+    stroke: var(--green);
+  }
+}
+//========================================================================================================================================================
+
+//========================================================================================================================================================
+.section {
+  border-top: 1px solid var(--jet);
+  padding-top: 64px;
+  padding-bottom: 64px;
+
+  @media (min-width: 768px) {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  @media (min-width: 1024px) {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+}
+
+//========================================================================================================================================================

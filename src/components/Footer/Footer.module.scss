@@ -1,0 +1,169 @@
+.footer {
+  padding: 3rem 0;
+  border-top: 1px solid var(--jet);
+  @media (max-width: 475px) {
+    padding-bottom: 1.5rem;
+  }
+}
+.footerBody {
+  display: grid;
+  row-gap: 24px;
+  grid-template-areas:
+    'logo socialLinks'
+    'footerLinks footerLinks';
+  grid-template-columns: 1fr auto;
+
+  @media (max-width: 768px) {
+    grid-template-areas:
+      'logo'
+      'footerLinks'
+      'socialLinks'
+      'copy';
+    grid-template-columns: 1fr;
+  }
+}
+
+.logoLink {
+  display: inline-flex;
+}
+.footerLinks {
+  grid-area: footerLinks;
+  display: flex;
+  row-gap: 1.5rem;
+  flex-wrap: wrap-reverse;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    display: contents;
+  }
+  ul {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    row-gap: 1rem;
+    @media (min-width: 768px) {
+      flex-direction: row;
+    }
+  }
+  li {
+    padding: 8px 16px;
+    @media (max-width: 768px) {
+      padding: 8px 8px 8px 0;
+    }
+  }
+  a {
+    display: inline-flex;
+    align-items: center;
+    column-gap: 8px;
+    transition: all 0.3s ease 0s;
+
+    svg {
+      transition: all 0.3s ease 0s;
+      stroke: var(--platinum);
+    }
+
+    span {
+      display: inline-block;
+      position: relative;
+      &::before {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -4px;
+        left: 50%;
+        background-color: var(--azure);
+        transition: all 0.2s;
+      }
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        color: var(--azure);
+        svg {
+          stroke: var(--azure);
+        }
+        span::before {
+          width: 100%;
+          left: 0;
+        }
+      }
+    }
+  }
+}
+
+.socials {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  grid-area: socialLinks;
+}
+
+.socialLink {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: var(--moon);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+
+  @media (any-hover: hover) {
+    &:hover {
+      color: var(--azure);
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.socialLink:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background:
+    linear-gradient(currentColor, currentColor) left top,
+    linear-gradient(currentColor, currentColor) left top,
+    linear-gradient(currentColor, currentColor) right top,
+    linear-gradient(currentColor, currentColor) right top,
+    linear-gradient(currentColor, currentColor) left bottom,
+    linear-gradient(currentColor, currentColor) left bottom,
+    linear-gradient(currentColor, currentColor) right bottom,
+    linear-gradient(currentColor, currentColor) right bottom;
+
+  background-size:
+    10px 2px,
+    2px 10px,
+    10px 2px,
+    2px 10px,
+    10px 2px,
+    2px 10px,
+    10px 2px,
+    2px 10px;
+
+  background-repeat: no-repeat;
+  z-index: 2;
+}
+
+.socialLink:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease 0s;
+  background: var(--linear-1);
+}
+.copy {
+  grid-area: copy;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--platinum);
+}

@@ -1,0 +1,85 @@
+.root {
+  position: relative;
+  display: inline-block;
+}
+
+.menu {
+  position: fixed;
+  top: calc(5rem + 1px);
+  left: 0;
+  right: 0;
+  min-width: 360px;
+  background-color: var(--dark-grey);
+  padding: 0.5rem;
+
+  z-index: 100;
+
+  @media (min-width: 475px) {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: auto;
+    outline: 1px solid var(--moon);
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+    padding: 8px 16px;
+    color: var(--moon);
+    transition: all 0.3s ease 0s;
+
+    span {
+      font-size: 1.125rem;
+      line-height: 28px;
+      font-weight: 500;
+    }
+    span span {
+      transition: all 0.3s ease 0s;
+      color: var(--platinum);
+    }
+
+    svg {
+      stroke: var(--platinum);
+      transition: all 0.3s ease 0s;
+    }
+
+    &:focus-visible,
+    &:hover {
+      outline: none;
+      background-color: var(--azure);
+      color: var(--black);
+      span span {
+        color: var(--black);
+      }
+      svg {
+        stroke: var(--black);
+      }
+    }
+
+    &:last-child {
+      border-top: 1px solid var(--jet);
+      svg {
+        stroke: var(--unstake);
+      }
+      color: var(--unstake);
+      &:focus-visible,
+      &:hover {
+        outline: none;
+        background-color: var(--unstake);
+        color: var(--black);
+        svg {
+          stroke: var(--black);
+        }
+      }
+    }
+  }
+}
+
+:global(.dropdown-copied) {
+  color: var(--green) !important;
+
+  svg {
+    stroke: var(--green) !important;
+  }
+}

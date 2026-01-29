@@ -1,0 +1,30 @@
+.h1 {
+  font-size: 2.75rem;
+  line-height: 1.36;
+  color: var(--moon);
+  letter-spacing: 0.02em;
+  font-weight: 400;
+  text-transform: uppercase;
+
+  @media (min-width: 768px) {
+    font-size: 3.75rem;
+    line-height: 1.26;
+    letter-spacing: 0.04em;
+  }
+}
+
+.h2 {
+  font-size: 2rem;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: var(--moon);
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.subTitle {
+  font-size: 1.125rem;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: var(--platinum);
+}
