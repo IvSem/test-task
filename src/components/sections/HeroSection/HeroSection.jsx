@@ -1,5 +1,7 @@
 import ProgressBar from '../../ui/ProgressBar/ProgressBar';
 import styles from './HeroSection.module.scss';
+import GalaxyImg from './Galaxy.svg';
+import GalaxyImgMob from './Galaxy-mob.svg';
 export default function HeroSection() {
   return (
     <section className={styles.section}>
@@ -41,15 +43,10 @@ export default function HeroSection() {
             </div>
           </div>
         </div>
-      </div>
-
-      <div className={styles.splineWrap}>
-        <iframe
-          className={styles.spline}
-          src="https://my.spline.design/stakenovahero768-TsAXwiA81sLbdVlmLt1jMjkA/"
-          frameBorder="0"
-          loading="lazy"
-        />
+        <div className={styles.splineWrap}>
+          <img className={styles.desktop} src={GalaxyImg} alt="" />
+          <img className={styles.mobile} src={GalaxyImgMob} alt="" />
+        </div>
       </div>
     </section>
   );

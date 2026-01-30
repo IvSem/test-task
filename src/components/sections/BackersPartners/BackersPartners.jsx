@@ -1,4 +1,4 @@
-import { useState, useRef, useLayoutEffect } from 'react';
+import { useState, useRef, useLayoutEffect, useEffect } from 'react';
 import styles from './BackersPartners.module.scss';
 import { TABS, ITEMS } from './data';
 import Button from '@/components/ui/Button/Button.jsx';
@@ -12,6 +12,8 @@ export default function BackersPartners() {
   const [maxGridHeight, setMaxGridHeight] = useState(0);
   const [showAll, setShowAll] = useState(false);
   const gridRef = useRef(null);
+  const maxHeightRef = useRef(0);
+  const [resizeTick, setResizeTick] = useState(0);
 
   const isDesktop = typeof window !== 'undefined' ? window.innerWidth > 768 : true;
 
@@ -49,47 +51,42 @@ export default function BackersPartners() {
     setLastRowIds((prev) => (prev.join(',') !== lastRowStr.join(',') ? lastRowStr : prev));
     setSingleInRowIds((prev) => (prev.join(',') !== singleStr.join(',') ? singleStr : prev));
     setLastColumnIds((prev) => (prev.join(',') !== lastColsStr.join(',') ? lastColsStr : prev));
-  }, [filteredItems, isDesktop]);
+  }, [filteredItems, isDesktop, resizeTick]);
 
   useLayoutEffect(() => {
     if (!isDesktop || !gridRef.current) return;
 
-    const tempDiv = document.createElement('div');
-    tempDiv.style.position = 'absolute';
-    tempDiv.style.visibility = 'hidden';
-    tempDiv.style.width = gridRef.current.offsetWidth + 'px';
-    tempDiv.style.display = 'grid';
-    tempDiv.style.gridTemplateColumns = getComputedStyle(gridRef.current).gridTemplateColumns;
-    tempDiv.style.gap = getComputedStyle(gridRef.current).gap;
-    tempDiv.style.padding = getComputedStyle(gridRef.current).padding;
-    document.body.appendChild(tempDiv);
+    const grid = gridRef.current;
 
-    let tallest = 0;
+    requestAnimationFrame(() => {
+      const height = grid.scrollHeight;
 
-    TABS.forEach((tab) => {
-      const items = tab.id === 'all' ? ITEMS : ITEMS.filter((i) => i.type === tab.id);
-
-      items.forEach((item) => {
-        const card = document.createElement('div');
-        card.className = styles.card;
-        card.innerHTML = `
-          <div class="${styles.cardLogo}">${item.logo ? `<img src="${item.logo}" />` : ''}</div>
-          <div class="${styles.cardBody}">
-            <span class="${styles.type}">${item.type}</span>
-            <strong class="${styles.name}">${item.name}</strong>
-          </div>
-        `;
-        tempDiv.appendChild(card);
-      });
-
-      const height = tempDiv.scrollHeight;
-      if (height > tallest) tallest = height;
-
-      tempDiv.innerHTML = '';
+      if (height > maxHeightRef.current) {
+        maxHeightRef.current = height;
+        setMaxGridHeight(height);
+      }
     });
+  }, [filteredItems, isDesktop, resizeTick]);
 
-    setMaxGridHeight(tallest);
-    document.body.removeChild(tempDiv);
+  useEffect(() => {
+    let rafId;
+
+    const onResize = () => {
+      cancelAnimationFrame(rafId);
+
+      rafId = requestAnimationFrame(() => {
+        setMaxGridHeight(0);
+        maxHeightRef.current = 0;
+        setResizeTick((v) => v + 1);
+      });
+    };
+
+    window.addEventListener('resize', onResize);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      window.removeEventListener('resize', onResize);
+    };
   }, [isDesktop]);
 
   const visibleItems = isDesktop ? filteredItems : showAll ? filteredItems : filteredItems.slice(0, 6);
@@ -165,7 +162,7 @@ export default function BackersPartners() {
           })}
         </div>
 
-        {!isDesktop && filteredItems.length > 4 && !showAll && (
+        {!isDesktop && filteredItems.length > 6 && !showAll && (
           <Button variant="outline" className={styles.loadMoreBtn} onClick={() => setShowAll(true)}>
             <RefreshCw />
             load more
