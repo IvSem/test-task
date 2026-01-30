@@ -1,6 +1,6 @@
-import { useState, useRef, useLayoutEffect, useEffect } from 'react';
+import { useState, useRef, useLayoutEffect, useEffect, useMemo } from 'react';
 import styles from './BackersPartners.module.scss';
-import { TABS, ITEMS } from './data';
+import { ITEMS } from './data';
 import Button from '@/components/ui/Button/Button.jsx';
 import { RefreshCw } from 'lucide-react';
 
@@ -89,6 +89,21 @@ export default function BackersPartners() {
     };
   }, [isDesktop]);
 
+  const tabs = useMemo(() => {
+    const countsMap = ITEMS.reduce((acc, item) => {
+      acc[item.type] = (acc[item.type] || 0) + 1;
+      return acc;
+    }, {});
+
+    const generatedTabs = Object.entries(countsMap).map(([type, count]) => ({
+      id: type,
+      label: type.charAt(0).toUpperCase() + type.slice(1),
+      count,
+    }));
+
+    return [{ id: 'all', label: 'All', count: ITEMS.length }, ...generatedTabs];
+  }, []);
+
   const visibleItems = isDesktop ? filteredItems : showAll ? filteredItems : filteredItems.slice(0, 6);
 
   return (
@@ -102,7 +117,7 @@ export default function BackersPartners() {
             </p>
           </div>
           <div className={styles.tabs}>
-            {TABS.map((tab) => (
+            {tabs.map((tab) => (
               <button
                 key={tab.id}
                 type="button"

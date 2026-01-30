@@ -23,12 +23,6 @@ const steps = [
     desc: 'Receive your stable yield rewards',
     icon: usdcIcon,
   },
-  {
-    id: 4,
-    title: 'CLAIM USDC',
-    desc: 'Receive your stable yield rewards',
-    icon: usdcIcon,
-  },
 ];
 
 export default function HowToEarn() {

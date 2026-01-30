@@ -13,14 +13,6 @@ import orca from '@/assets/icons/backers-partners/integrations/orca.svg';
 import raydium from '@/assets/icons/backers-partners/integrations/raydium.svg';
 import serum from '@/assets/icons/backers-partners/integrations/serum.svg';
 
-export const TABS = [
-  { id: 'all', label: 'All', count: 14 },
-  { id: 'investor', label: 'Investor', count: 3 },
-  { id: 'partner', label: 'Partner', count: 4 },
-  { id: 'grant', label: 'Grant', count: 3 },
-  { id: 'integration', label: 'Integration', count: 3 },
-];
-
 export const ITEMS = [
   { id: 1, name: '3X Capital', type: 'investor', logo: capital },
   { id: 2, name: 'Venture Launch', type: 'investor', logo: venture },
