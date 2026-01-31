@@ -1,6 +1,13 @@
 import styles from './Footer.module.scss';
 import logo from '@/assets/images/logos/logo.svg';
 import socialIcon1 from '@/assets/icons/socials/01.svg';
+import socialIcon2 from '@/assets/icons/socials/02.svg';
+import socialIcon3 from '@/assets/icons/socials/03.svg';
+import socialIcon4 from '@/assets/icons/socials/04.svg';
+import socialIcon5 from '@/assets/icons/socials/05.svg';
+import socialIcon6 from '@/assets/icons/socials/06.svg';
+import socialIcon7 from '@/assets/icons/socials/07.svg';
+import duneIcon from '@/assets/icons/socials/dune.svg';
 import { BotMessageSquare, File, Folder, Info, Shield } from 'lucide-react';
 
 const Footer = () => {
@@ -54,25 +61,25 @@ const Footer = () => {
               <img src={socialIcon1} alt="" />
             </a>
             <a className={styles.socialLink}>
-              <img src={socialIcon1} alt="" />
+              <img src={duneIcon} alt="" />
             </a>
             <a className={styles.socialLink}>
-              <img src={socialIcon1} alt="" />
+              <img src={socialIcon2} alt="" />
             </a>
             <a className={styles.socialLink}>
-              <img src={socialIcon1} alt="" />
+              <img src={socialIcon3} alt="" />
             </a>
             <a className={styles.socialLink}>
-              <img src={socialIcon1} alt="" />
+              <img src={socialIcon4} alt="" />
             </a>
             <a className={styles.socialLink}>
-              <img src={socialIcon1} alt="" />
+              <img src={socialIcon5} alt="" />
             </a>
             <a className={styles.socialLink}>
-              <img src={socialIcon1} alt="" />
+              <img src={socialIcon6} alt="" />
             </a>
             <a className={styles.socialLink}>
-              <img src={socialIcon1} alt="" />
+              <img src={socialIcon7} alt="" />
             </a>
           </div>
         </div>

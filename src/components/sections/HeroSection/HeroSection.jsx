@@ -2,6 +2,8 @@ import ProgressBar from '../../ui/ProgressBar/ProgressBar';
 import styles from './HeroSection.module.scss';
 import GalaxyImg from './Galaxy.svg';
 import GalaxyImgMob from './Galaxy-mob.svg';
+import Spline from '@splinetool/react-spline';
+
 export default function HeroSection() {
   return (
     <section className={styles.section}>
@@ -46,6 +48,8 @@ export default function HeroSection() {
         <div className={styles.splineWrap}>
           <img className={styles.desktop} src={GalaxyImg} alt="" />
           <img className={styles.mobile} src={GalaxyImgMob} alt="" />
+
+          {/*<Spline scene="https://prod.spline.design/B18XVUL2IOSJXJ7g/scene.splinecode" />*/}
         </div>
       </div>
     </section>
