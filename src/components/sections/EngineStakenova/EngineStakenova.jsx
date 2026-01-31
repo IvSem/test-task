@@ -64,16 +64,18 @@ export default function EngineStakenova() {
       );
     };
 
+    const threshold = window.innerWidth < 768 ? 0.1 : 0.5;
+
     const observer = new IntersectionObserver(
       (entries, observer) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+          if (entry.isIntersecting && entry.intersectionRatio >= threshold) {
             runAnimation();
             observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.5 },
+      { threshold },
     );
 
     observer.observe(sectionRef.current);
