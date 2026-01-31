@@ -30,29 +30,25 @@ export default function EngineStakenova() {
     };
 
     const runAnimation = () => {
-      // Step 1
       steps[0].classList.add(styles.active);
       getAnim(0)?.addEventListener(
         'animationend',
         () => {
           activateDivider(0, () => {
-            // Step 2
             steps[1].classList.add(styles.active);
             getAnim(1)?.addEventListener(
               'animationend',
               () => {
                 activateDivider(1, () => {
-                  // Step 3
                   steps[2].classList.add(styles.active);
                   const step3Anim = getAnim(2);
 
                   step3Anim?.addEventListener(
                     'animationend',
                     () => {
-                      // Step 3 items по очереди
                       const items = steps[2].querySelectorAll(`.${styles.stepItem}`);
                       items.forEach((item, i) => {
-                        item.style.animationDelay = `${i * 0.3}s`;
+                        item.style.animationDelay = `${i * 0.5}s`;
                         item.classList.add(styles.active);
                       });
                     },
@@ -68,13 +64,12 @@ export default function EngineStakenova() {
       );
     };
 
-    // Intersection Observer
     const observer = new IntersectionObserver(
       (entries, observer) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
-            runAnimation(); // запускаем анимацию
-            //observer.unobserve(entry.target); // один раз
+            runAnimation();
+            observer.unobserve(entry.target);
           }
         });
       },
@@ -96,7 +91,7 @@ export default function EngineStakenova() {
           <div className={styles.stepsTitle}>
             [ <span className={styles.highliht}>Earning</span> Process ]
           </div>
-          <div className={`${styles.step} ${styles.active}`}>
+          <div className={`${styles.step}`}>
             <svg
               width="100%"
               height="100%"
